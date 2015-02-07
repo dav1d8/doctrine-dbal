@@ -37,6 +37,8 @@ final class Events
     }
 
     const postConnect = 'postConnect';
+    const postCommit = 'postCommit';
+    const postRollBack = 'postRollBack';
 
     const onSchemaCreateTable             = 'onSchemaCreateTable';
     const onSchemaCreateTableColumn       = 'onSchemaCreateTableColumn';

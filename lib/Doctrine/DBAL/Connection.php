@@ -1082,6 +1082,7 @@ class Connection implements DriverConnection
                 $logger->startQuery('"COMMIT"');
             }
             $this->_conn->commit();
+            $this->_eventManager->dispatchEvent(Events::postCommit);
             if ($logger) {
                 $logger->stopQuery();
             }
@@ -1122,6 +1123,7 @@ class Connection implements DriverConnection
             }
             $this->_transactionNestingLevel = 0;
             $this->_conn->rollback();
+            $this->_eventManager->dispatchEvent(Events::postRollBack);
             $this->_isRollbackOnly = false;
             if ($logger) {
                 $logger->stopQuery();
